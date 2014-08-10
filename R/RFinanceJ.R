@@ -1,6 +1,6 @@
 #' RFinanceJ 
 #'
-#' Get weather data from http://openweathermap.org/
+#' Get the data related to finance in Japan using variety types of data sources.
 #'
 #' @name RFinanceJ
 #' @docType package

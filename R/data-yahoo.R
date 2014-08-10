@@ -32,9 +32,9 @@ run_query <- function(query)
   COLNAMES <- c("Date", "Open", "High", "Low", "Close", "Volume", "AdjClose")
   if(!is.null(res)){
     colnames(res) <- COLNAMES
-    res_data <- res %>% select(Open:AdjClose) %>% apply(2, as_number)
+    res_data <- res %>% select(Open:AdjClose) %>% lapply(as_number) %>% Reduce(cbind, .)
     res_date <- res %>% select(Date) %>% convert_to_date %>% data.frame(Date=.)
-    cbind(res_date, res_data)   
+    cbind(res_date, res_data) %>% setNames(COLNAMES)
   }else{
     nd <- as.double()
     data.frame(as.Date(character()), nd, nd, nd, nd, nd, nd) %>% setNames(COLNAMES)

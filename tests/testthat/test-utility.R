@@ -17,4 +17,5 @@ test_that("as_number-1",{
   expect_equal(as_number("1,234"), 1234)  
   expect_equal(as_number("123"), 123)  
   expect_equal(as_number("121,234"), 121234)  
+  expect_equal(as_number("567,121,234"), 567121234)  
 })

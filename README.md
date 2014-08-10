@@ -1,6 +1,8 @@
 RFinanceJ package - get financial data in Japan -
 =============================================================
 
+[![Build Status](https://travis-ci.org/teramonagi/RFinanceJ)](https://travis-ci.org/teramonagi/RFinanceJ.png)
+
 ## What's this
 Get the data related to finance in Japan using variety types of data sources
 
@@ -8,7 +10,7 @@ Get the data related to finance in Japan using variety types of data sources
 ## Get data from Yahoo!Finance in Japan
 ```r
 # Get stock price of the Bank of Tokyo-Mitsubishi UFJ,Ltd. 
-> df <- get_from_yahoo('8411.T', "2014-1-1", "2014-3-3", "daily")
+> df <- rfinancej('8411.T', "data.frame", "2014-1-1", "2014-3-3", "daily", "yahoo")
 > head(df)
         Date Open High Low Close    Volume AdjClose
 1 2014-03-03  207  208 205   208  76980600      208

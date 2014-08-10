@@ -1,11 +1,3 @@
-#' Get the data from Yahoo Japan
-#'
-#' @param code Dataset code on Quandl specified as a string or an array of strings.
-#' @param start_date Use to truncate data by start date in 'yyyy-mm-dd' format.
-#' @param end_date Use to truncate data by end date in 'yyyy-mm-dd' format.
-#' @param collapse Collapse frequency of Data.
-#' @return data
-#' @export
 get_from_yahoo <- function(
   code,
   start_date,
@@ -32,7 +24,7 @@ run_query <- function(query)
   COLNAMES <- c("Date", "Open", "High", "Low", "Close", "Volume", "AdjClose")
   if(!is.null(res)){
     colnames(res) <- COLNAMES
-    res_data <- res %>% select(Open:AdjClose) %>% lapply(as_number) %>% Reduce(cbind, .)
+    res_data <- res %>% select(Open:AdjClose) %>% mutate_each(funs(as_number))
     res_date <- res %>% select(Date) %>% convert_to_date %>% data.frame(Date=.)
     cbind(res_date, res_data) %>% setNames(COLNAMES)
   }else{

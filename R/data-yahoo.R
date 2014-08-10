@@ -32,6 +32,23 @@ run_query <- function(query)
     data.frame(as.Date(character()), nd, nd, nd, nd, nd, nd) %>% setNames(COLNAMES)
   }
 }
+#
+format_code <- function(code)
+{
+  if(is.numeric(code)){
+    paste0(code, ".T")
+  }else if(is.character(code)){
+    if(length(grep(".T", txt))){
+      code      
+    }else{
+      paste0(code, ".T")      
+    }
+  }
+  else{
+    stop("Elements of n must be positive")
+  }
+}
+#
 make_query <- function(code, type, start_date, end_date, frequency, page)
 {
   BASE <- "http://info.finance.yahoo.co.jp/history/?code="
@@ -45,6 +62,6 @@ make_query <- function(code, type, start_date, end_date, frequency, page)
   }
   else{
     "d"
-  }  
-  paste0(BASE, code, s, e, '&p=', page,'&tm=', yahoo_frequency)  
+  } 
+  paste0(BASE, format_code(code), s, e, '&p=', page,'&tm=', yahoo_frequency)  
 }

@@ -1,11 +1,11 @@
-RFinanceJ
-===============
+RFinanceJ package - get financial data in Japan -
+=============================================================
 
-** What's this
+## What's this
 Get the data related to finance in Japan using variety types of data sources
 
 
-** Get data from Yahoo!Finance in Japan
+## Get data from Yahoo!Finance in Japan
 ```r
 # Get stock price of the Bank of Tokyo-Mitsubishi UFJ,Ltd. 
 > df <- get_from_yahoo('8411.T', "2014-1-1", "2014-3-3", "daily")
@@ -18,3 +18,4 @@ Get the data related to finance in Japan using variety types of data sources
 5 2014-02-25  215  217 213   216 111715600      216
 6 2014-02-24  214  216 212   213  94971200      213
 ```
+

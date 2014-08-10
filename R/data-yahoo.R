@@ -38,7 +38,7 @@ format_code <- function(code)
   if(is.numeric(code)){
     paste0(code, ".T")
   }else if(is.character(code)){
-    if(length(grep(".T", txt))){
+    if(length(grep(".T", code))){
       code      
     }else{
       paste0(code, ".T")      

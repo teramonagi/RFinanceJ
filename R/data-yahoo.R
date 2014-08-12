@@ -45,7 +45,7 @@ format_code <- function(code)
     }
   }
   else{
-    stop("Elements of n must be positive")
+    stop("'code' argument must be number of character for Yahoo! Finance.")
   }
 }
 #

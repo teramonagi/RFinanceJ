@@ -6,6 +6,7 @@
 #' @docType package
 #' @import XML dplyr magrittr xts
 NULL
+
 #Global constant
 #Data frequency
 DAILY <- "daily"
@@ -34,3 +35,8 @@ rfinancej <- function(
 {
   get_from_yahoo(code, start_date, end_date, frequency)
 }
+
+#' Abbreviation function of rfinancej
+#'
+#' @export
+rfj <- rfinancej

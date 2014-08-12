@@ -9,6 +9,16 @@ Current supported data sources are...
 
 - [Yahoo! Finance](http://finance.yahoo.co.jp/)
 
+
+## Installation
+
+You can install RFinanceJ package from github using the devtools package
+
+```{r}
+library(devtools)
+install_github('RFinanceJ', 'teramonagi')
+```
+
 ## Quick examples
 
 ### Get data from Yahoo!Finance in Japan
@@ -25,3 +35,11 @@ Current supported data sources are...
 6 2014-02-24  214  216 212   213  94971200      213
 ```
 
+## More
+
+### Credits
+
+Most of the implementation in RFinanceJ is inspired by [RFinanceYJ package](http://cran.r-project.org/web/packages/RFinanceYJ/index.html). I have reused some code from that package verbatim, and would like to acknowledge the efforts of its author Yohei Sato, Nobuaki Oshiro, Shinichi Takayanagi.
+
+### License
+RFinanceJ is licensed under the MIT License. 

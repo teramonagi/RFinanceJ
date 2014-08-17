@@ -25,7 +25,7 @@ run_query <- function(query)
   if(!is.null(res)){
     colnames(res) <- COLNAMES
     res_data <- res %>% select(Open:AdjClose) %>% mutate_each(funs(as_number))
-    res_date <- res %>% select(Date) %>% convert_to_date %>% data.frame(Date=.)
+    res_date <- res %>% select(Date) %>% mutate_each(funs(convert_to_date))
     cbind(res_date, res_data) %>% setNames(COLNAMES)
   }else{
     nd <- as.double()
@@ -54,7 +54,7 @@ make_query <- function(code, type, start_date, end_date, frequency, page)
   BASE <- "http://info.finance.yahoo.co.jp/history/?code="
   DATE_STRING_FORMAT <- "([0-9]{4,4})-([0-9]{2,2})-([0-9]{2,2})"
   s <- start_date %>% convert_to_date %>% format("%Y-%m-%d") %>% gsub(DATE_STRING_FORMAT,"&sy=\\1&sm=\\2&sd=\\3", .)
-  e <- end_date   %>% convert_to_date %>% format("%Y-%m-%d") %>% gsub(DATE_STRING_FORMAT,"&ey=\\1&em=\\2&ed=\\3", .)    
+  e <- end_date   %>% convert_to_date %>% format("%Y-%m-%d") %>% gsub(DATE_STRING_FORMAT,"&ey=\\1&em=\\2&ed=\\3", .)
   yahoo_frequency <- if(frequency == WEEKLY){
     "w"
   }else if(frequency == MONTHLY){

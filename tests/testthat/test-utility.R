@@ -12,6 +12,15 @@ test_that("convert_to_date_2",{
   expect_equal(convert_to_date(x), x)  
 })
 
+test_that("convert_to_date_3",{
+  x <- c("2012年12月31日", "2013年12月7日")
+  expect_equal(convert_to_date(x), c(as.Date("2012-12-31"), as.Date("2013-12-7"))) 
+})
+
+test_that("convert_to_date_4",{
+  x <- c("2012年12月", "2013年1月")
+  expect_equal(convert_to_date(x), c(as.Date("2012-12-1"), as.Date("2013-1-1"))) 
+})
 
 test_that("as_number-1",{
   expect_equal(as_number("1,234"), 1234)  

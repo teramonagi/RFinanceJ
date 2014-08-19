@@ -33,10 +33,19 @@ rfinancej <- function(
   frequency,
   src)
 {
-  get_from_yahoo(code, start_date, end_date, frequency)
+  if(length(code) == 0){stop('code argument should be filed')}
+
+  if(length(code) == 1){
+    get_from_yahoo(code, start_date, end_date, frequency)
+  }else{
+    result <- list()
+    for(i in seq_along(code)){
+      result[[i]] <- get_from_yahoo(code[i], start_date, end_date, frequency)
+    }
+    names(result) <- code
+    result    
+  }
 }
 
-#' Abbreviation function of rfinancej
-#'
 #' @export
 rfj <- rfinancej

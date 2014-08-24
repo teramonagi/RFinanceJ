@@ -27,11 +27,11 @@ YAHOO <- "yahoo"
 #' @export
 rfinancej <- function(
   code,
-  type,
-  start_date,
-  end_date,
-  frequency,
-  src)
+  type="data.frame",
+  start_date=Sys.Date()-365,
+  end_date=Sys.Date(),
+  frequency="daily",
+  src="yahoo")
 {
   if(length(code) == 0){stop('code argument should be filed')}
 

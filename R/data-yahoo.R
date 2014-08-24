@@ -20,16 +20,20 @@ get_from_yahoo <- function(
 }
 run_query <- function(query)
 {
+  COLNAMES <- list(
+    c("Date", "Open", "High", "Low", "Close", "Volume", "AdjClose"),
+    c("Date", "Open", "High", "Low", "Close"),
+    c("Date", "Value", "NAV"))
   res <- readHTMLTable(query, stringsAsFactors=FALSE)[[2]]
-  COLNAMES <- c("Date", "Open", "High", "Low", "Close", "Volume", "AdjClose")
   if(!is.null(res)){
-    colnames(res) <- COLNAMES
-    res_data <- res %>% select(Open:AdjClose) %>% mutate_each(funs(as_number))
-    res_date <- res %>% select(Date) %>% mutate_each(funs(convert_to_date))
-    cbind(res_date, res_data) %>% setNames(COLNAMES)
+    size <- ncol(res)
+    colnames(res) <- unlist(COLNAMES[sapply(COLNAMES, function(x)length(x)==size)])
+    res_data <- res %>% select(-Date) %>% mutate_each(funs(as_number))
+    res_date <- res %>% select(Date)  %>% mutate_each(funs(convert_to_date))
+    cbind(res_date, res_data)
   }else{
     nd <- as.double()
-    data.frame(as.Date(character()), nd, nd, nd, nd, nd, nd) %>% setNames(COLNAMES)
+    data.frame(as.Date(character()), nd)
   }
 }
 #
@@ -39,7 +43,7 @@ format_code <- function(code)
     paste0(code, ".T")
   }else if(is.character(code)){
     if(length(grep(".T", code))){
-      code      
+      code
     }else{
       paste0(code, ".T")      
     }
@@ -63,5 +67,5 @@ make_query <- function(code, type, start_date, end_date, frequency, page)
   else{
     "d"
   } 
-  paste0(BASE, format_code(code), s, e, '&p=', page,'&tm=', yahoo_frequency)  
+  paste0(BASE, code, s, e, '&p=', page,'&tm=', yahoo_frequency)  
 }

@@ -1,13 +1,13 @@
 Package: RFinanceJ
 Type: Package
-Title: Get the data related to finance in Japan using variety types of data sources.
+Title: Get the data related to financial fileds in Japan using variety types of data sources.
 Version: 1.0
 Date: 2014-08-09
 Author: teramonagi
 Maintainer: teramonagi <teramonagi@gmail.com>
 Description: Get the data related to finance in Japan using variety types of
     data source. This package allow you to get financial data in Japan easily.
-    Current supported data source is yahoo finance
+    Current supported data source is yahoo finance japan and UTokyo Daily Price Project.
 License: MIT + file LICENSE
 Suggests:
     testthat

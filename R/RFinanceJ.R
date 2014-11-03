@@ -14,6 +14,7 @@ WEEKLY <- "weekly"
 MONTHLY <- "monthly"
 #Data source
 YAHOO <- "yahoo"
+UTDPP <- "utdpp"
 
 #' Get financial data in Japan
 #'
@@ -26,24 +27,27 @@ YAHOO <- "yahoo"
 #' @return data
 #' @export
 rfinancej <- function(
-  code,
+  code=NA,
   type="data.frame",
   start_date=Sys.Date()-365,
   end_date=Sys.Date(),
   frequency="daily",
   src="yahoo")
 {
-  if(length(code) == 0){stop('code argument should be filed')}
-
-  if(length(code) == 1){
-    get_from_yahoo(code, start_date, end_date, frequency)
-  }else{
-    result <- list()
-    for(i in seq_along(code)){
-      result[[i]] <- get_from_yahoo(code[i], start_date, end_date, frequency)
+  if(src=="yahoo"){
+    if(is.na(code)){stop('code argument should be filed when you choose yahoo as a data source')}
+    if(length(code) == 1){
+      get_from_yahoo(code, start_date, end_date, frequency)
+    }else{
+      result <- list()
+      for(i in seq_along(code)){
+        result[[i]] <- get_from_yahoo(code[i], start_date, end_date, frequency)
+      }
+      names(result) <- code
+      result    
     }
-    names(result) <- code
-    result    
+  }else if(src=="utdpp"){
+    get_from_utdpp(start_date, end_date, frequency)    
   }
 }
 

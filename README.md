@@ -5,9 +5,10 @@ RFinanceJ package
 
 ## What's this
 Get the financial data in Japan using variety types of data sources.
-Current supported data sources are...
+Current supported data sources are as the following:
 
 - [Yahoo! Finance](http://finance.yahoo.co.jp/)
+- [UTokyo Daily Price Project](http://www.cmdlab.co.jp/price_u-tokyo/dailys_e)
 
 
 ## Installation

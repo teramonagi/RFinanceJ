@@ -35,7 +35,7 @@ rfinancej <- function(
   src="yahoo")
 {
   if(src=="yahoo"){
-    if(is.na(code)){stop('code argument should be filed when you choose yahoo as a data source')}
+    if(any(is.na(code))){stop('code argument should be filed when you choose yahoo as a data source')}
     if(length(code) == 1){
       get_from_yahoo(code, start_date, end_date, frequency)
     }else{

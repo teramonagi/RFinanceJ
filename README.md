@@ -17,14 +17,14 @@ You can install RFinanceJ package from github using the devtools package
 
 ```{r}
 library(devtools)
-install_github('RFinanceJ', 'teramonagi')
+install_github('teramonagi/RFinanceJ')
 ```
 
 ## Quick examples
 
 ### Get data from Yahoo!Finance in Japan
 ```r
-# Get stock price of the Bank of Tokyo-Mitsubishi UFJ,Ltd. 
+# Get stock price of the Mizuho Financial Group, Inc.）. 
 > df <- rfinancej('8411.T', "data.frame", "2014-1-1", "2014-3-3", "daily", "yahoo")
 > head(df)
         Date Open High Low Close    Volume AdjClose

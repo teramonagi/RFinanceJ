@@ -16,7 +16,7 @@ get_from_yahoo <- function(
     }
     i <- i + 1
   }
-  rbind_all(dfl)
+  dplyr::bind_rows(dfl)
 }
 run_query <- function(query)
 {
